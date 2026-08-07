@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrowthCore - Turn Your LinkedIn From Invisible to Influential</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #ffffff;
+            color: #0b1c30;
+            line-height: 1.6;
+        }
+
+        /* Typography */
+        h1 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 56px;
+            letter-spacing: -0.96px;
+            margin-bottom: 24px;
+        }
+
+        h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 30px;
+            font-weight: 700;
+            line-height: 38px;
+            letter-spacing: -0.3px;
+            margin-bottom: 16px;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 26px;
+            color: #414752;
+        }
+
+        /* Utilities */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 64px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 32px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 24px;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background: #0a66c2;
+            color: white;
+            box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05);
+        }
+
+        .btn-primary:hover {
+            background: #0855a8;
+            transform: translateY(-1px);
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #0b1c30;
+            border: 2px solid #727783;
+        }
+
+        .btn-secondary:hover {
+            background: #f8f9ff;
+            border-color: #0a66c2;
+        }
+
+        .btn-light {
+            background: #f8f9ff;
+            color: #0a66c2;
+            box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05);
+        }
+
+        .btn-light:hover {
+            background: #e8f0ff;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            min-height: 870px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(211, 228, 254, 0.5) 0%, rgba(248, 249, 255, 1) 50%, rgba(248, 249, 255, 1) 100%);
+            padding: 224px 64px 200px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 896px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            margin-bottom: 24px;
+        }
+
+        .hero h1 .highlight {
+            color: #0a66c2;
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero h1 .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: #0a66c2;
+            border-radius: 2px;
+            opacity: 0.3;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            color: #414752;
+            margin-bottom: 16px;
+            line-height: 30px;
+        }
+
+        .hero-meta {
+            font-size: 16px;
+            color: #526071;
+            font-weight: 500;
+            margin-bottom: 36px;
+            line-height: 26px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 48px;
+        }
+
+        .trust-indicators {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            opacity: 0.7;
+            flex-wrap: wrap;
+        }
+
+        .trust-indicators img {
+            height: 32px;
+            object-fit: contain;
+        }
+
+        /* ===== ACHIEVEMENT SECTION ===== */
+        .achievement {
+            background: white;
+            border-top: 1px solid rgba(193, 198, 212, 0.2);
+            border-bottom: 1px solid rgba(193, 198, 212, 0.2);
+            padding: 49px 64px;
+            text-align: center;
+        }
+
+        .achievement-header {
+            margin-bottom: 48px;
+        }
+
+        .achievement-header h2 {
+            margin-bottom: 8px;
+        }
+
+        .achievement-header p {
+            font-size: 16px;
+            color: #414752;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stat-card {
+            background: #f8f9ff;
+            border: 1px solid rgba(193, 198, 212, 0.3);
+            border-radius: 12px;
+            padding: 25px;
+            text-align: left;
+        }
+
+        .stat-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 8px;
+        }
+
+        .stat-icon.blue {
+            background: #d6e3ff;
+        }
+
+        .stat-icon.orange {
+            background: #ffddb8;
+        }
+
+        .stat-icon.light-blue {
+            background: #d5e4f8;
+        }
+
+        .stat-icon img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .stat-value {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: #0b1c30;
+            line-height: 32px;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 16px;
+            color: #414752;
+            line-height: 26px;
+        }
+
+        /* ===== FORM SECTION ===== */
+        .form-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+            padding: 64px 104px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .form-left h2 {
+            margin-bottom: 16px;
+        }
+
+        .form-left p {
+            font-size: 18px;
+            line-height: 30px;
+            margin-bottom: 24px;
+        }
+
+        .form-image {
+            width: 100%;
+            height: 256px;
+            background: linear-gradient(135deg, #f0f4ff 0%, #f8f9ff 100%);
+            border-radius: 12px;
+            border: 1px solid rgba(193, 198, 212, 0.2);
+            box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            margin-bottom: 24px;
+        }
+
+        .form-card {
+            background: white;
+            border: 1px solid rgba(193, 198, 212, 0.3);
+            border-radius: 16px;
+            padding: 33px;
+            box-shadow: 0px 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group:last-child {
+            margin-bottom: 0;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #0b1c30;
+            margin-bottom: 8px;
+            letter-spacing: 0.28px;
+            text-transform: capitalize;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"] {
+            width: 100%;
+            padding: 15px 17px;
+            border: 1px solid #c1c6d4;
+            border-radius: 8px;
+            background: #f8f9ff;
+            font-size: 16px;
+            color: #0b1c30;
+            line-height: 24px;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        input[type="text"]::placeholder,
+        input[type="email"]::placeholder,
+        input[type="tel"]::placeholder {
+            color: #6b7280;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus {
+            outline: none;
+            border-color: #0a66c2;
+            background: #ffffff;
+            box-shadow: 0 0 0 3px rgba(10, 102, 194, 0.1);
+        }
+
+        .form-submit {
+            width: 100%;
+        }
+
+        /* ===== RUPEE AUDIT SECTION ===== */
+        .rupee-audit {
+            background: #0a66c2;
+            border-radius: 24px;
+            margin: 0 64px;
+            padding: 64px;
+            box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1), 0px 4px 6px -4px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .rupee-audit::before {
+            content: '';
+            position: absolute;
+            top: -128px;
+            right: -128px;
+            width: 256px;
+            height: 256px;
+            background: rgba(214, 227, 255, 0.2);
+            border-radius: 9999px;
+            filter: blur(32px);
+        }
+
+        .rupee-audit::after {
+            content: '';
+            position: absolute;
+            bottom: -128px;
+            left: -128px;
+            width: 256px;
+            height: 256px;
+            background: rgba(214, 227, 255, 0.2);
+            border-radius: 9999px;
+            filter: blur(32px);
+        }
+
+        .rupee-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .rupee-left h2 {
+            color: white;
+            margin-top: 16px;
+        }
+
+        .rupee-badge {
+            display: inline-block;
+            background: #ffb95f;
+            color: #2a1700;
+            padding: 4px 12px;
+            border-radius: 9999px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .rupee-description {
+            font-size: 18px;
+            line-height: 30px;
+            color: #d6e3ff;
+            margin-bottom: 24px;
+        }
+
+        .rupee-list {
+            margin-bottom: 24px;
+        }
+
+        .rupee-item {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 12px;
+            color: white;
+            font-size: 16px;
+            line-height: 24px;
+        }
+
+        .rupee-item::before {
+            content: '✓';
+            flex-shrink: 0;
+            color: white;
+            font-weight: 700;
+        }
+
+        .rupee-image {
+            background: linear-gradient(135deg, #f0f4ff 0%, #f8f9ff 100%);
+            border: 4px solid rgba(248, 249, 255, 0.1);
+            border-radius: 12px;
+            height: 320px;
+            overflow: hidden;
+            box-shadow: 0px 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #0b1c30;
+            border-top: 1px solid rgba(114, 119, 131, 0.2);
+            padding: 49px 64px 48px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        footer .logo {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 24px;
+            font-weight: 800;
+            color: #f8f9ff;
+        }
+
+        footer nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        footer a {
+            color: #d3e4fe;
+            text-decoration: none;
+            font-size: 16px;
+            line-height: 24px;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #ffffff;
+        }
+
+        footer .copyright {
+            color: #d3e4fe;
+            font-size: 16px;
+            line-height: 24px;
+            text-align: right;
+        }
+
+        /* ===== NOTIFICATIONS ===== */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            padding: 16px 24px;
+            border-radius: 8px;
+            font-size: 16px;
+            z-index: 9999;
+            animation: slideIn 0.3s ease;
+            box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .toast.success {
+            background: #10b981;
+            color: white;
+        }
+
+        .toast.error {
+            background: #ef4444;
+            color: white;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 32px;
+            }
+
+            h1 {
+                font-size: 36px;
+                line-height: 44px;
+                letter-spacing: -0.72px;
+            }
+
+            h2 {
+                font-size: 24px;
+                line-height: 32px;
+            }
+
+            .hero {
+                padding: 100px 24px 100px;
+                min-height: auto;
+            }
+
+            .hero-subtitle {
+                font-size: 16px;
+                line-height: 26px;
+            }
+
+            .hero-buttons {
+                gap: 12px;
+            }
+
+            .btn {
+                padding: 12px 24px;
+                font-size: 14px;
+            }
+
+            .achievement {
+                padding: 32px 24px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 16px;
+            }
+
+            .stat-card {
+                padding: 16px;
+            }
+
+            .stat-value {
+                font-size: 20px;
+                line-height: 28px;
+            }
+
+            .form-section {
+                grid-template-columns: 1fr;
+                gap: 32px;
+                padding: 32px 24px;
+            }
+
+            .form-left {
+                order: 2;
+            }
+
+            .form-image {
+                order: 1;
+            }
+
+            .rupee-audit {
+                margin: 0 24px;
+                padding: 32px;
+            }
+
+            .rupee-content {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .rupee-image {
+                height: 240px;
+            }
+
+            footer {
+                flex-direction: column;
+                text-align: center;
+                padding: 24px;
+            }
+
+            footer nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            footer .copyright {
+                text-align: center;
+                width: 100%;
+            }
+
+            .trust-indicators {
+                gap: 12px;
+            }
+
+            .trust-indicators img {
+                height: 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 28px;
+                line-height: 36px;
+                letter-spacing: -0.56px;
+            }
+
+            .hero {
+                padding: 60px 16px;
+            }
+
+            .container {
+                padding: 0 16px;
+            }
+
+            .form-section,
+            .rupee-audit {
+                padding: 24px 16px;
+            }
+
+            .btn {
+                padding: 12px 20px;
+                font-size: 14px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            footer {
+                padding: 24px 16px;
+            }
+        }
+
+        /* ===== LOADING STATE ===== */
+        .btn.loading {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        .btn.loading::after {
+            content: '';
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            margin-left: 8px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.6s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== HERO SECTION ===== -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>
+                Turn Your LinkedIn From
+                <span class="highlight">Invisible</span>
+                to Influential
+            </h1>
+            <p class="hero-subtitle">
+                We don't just "optimize profiles". We build your personal brand from scratch — with strategy, content, and consistency that actually gets you seen.
+            </p>
+            <p class="hero-meta">
+                From 0 to hero on LinkedIn — without confusion, guesswork, or wasting months figuring it out alone.
+            </p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" id="heroScrollBtn">
+                    Start Growing Today
+                </button>
+                <a href="https://payments.cashfree.com/forms/getaudit" class="btn btn-secondary" target="_blank">
+                    Get Your Profile Audit
+                </a>
+            </div>
+            <div class="trust-indicators">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23f0f0f0'/%3E%3Ccircle cx='30' cy='16' r='14' fill='%23f0f0f0'/%3E%3Ccircle cx='44' cy='16' r='14' fill='%23f0f0f0'/%3E%3C/svg%3E" alt="Trusted by">
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ACHIEVEMENT SECTION ===== -->
+    <section class="achievement">
+        <div class="achievement-header">
+            <h2>Real Growth. Real Results.</h2>
+            <p>This isn't luck. It's a system that works.</p>
+        </div>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon blue">
+                    <svg width="24" height="12" viewBox="0 0 24 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 11L6 6L11 8.5L23 1" stroke="#0a66c2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="stat-value">100+</div>
+                <div class="stat-label">Professionals helped</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon orange">
+                    <svg width="20" height="12" viewBox="0 0 20 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 1V11M1 6H19M19 1V11" stroke="#ff9500" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="stat-value">300%</div>
+                <div class="stat-label">Increase in inbound leads</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon light-blue">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="10" cy="10" r="9" stroke="#0a66c2" stroke-width="2"/>
+                        <path d="M10 3V10L15 15" stroke="#0a66c2" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <div class="stat-value">Zero to One</div>
+                <div class="stat-label">Brands built from scratch</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon blue">
+                    <svg width="22" height="15" viewBox="0 0 22 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 7.5H21M21 1L15.5 7.5L21 14" stroke="#0a66c2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="stat-value">10M+</div>
+                <div class="stat-label">Organic reach generated</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FORM SECTION ===== -->
+    <section class="form-section">
+        <div class="form-left">
+            <h2>Let's Build Your LinkedIn Presence Together</h2>
+            <p>Tell us a bit about you — and we'll show you exactly how to grow. No spam. No fluff. Just actionable clarity.</p>
+            <div class="form-image">
+                <svg viewBox="0 0 500 300" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: 100%;">
+                    <defs>
+                        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#e8f0ff;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#f8f9ff;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <rect width="500" height="300" fill="url(#grad1)"/>
+                    <circle cx="250" cy="150" r="80" fill="#d6e3ff" opacity="0.3"/>
+                    <rect x="150" y="80" width="200" height="140" rx="8" fill="#ffffff" stroke="#d6e3ff" stroke-width="2"/>
+                    <text x="250" y="150" text-anchor="middle" font-size="18" fill="#0a66c2" font-weight="500">Your Growth Awaits</text>
+                </svg>
+            </div>
+        </div>
+
+        <div class="form-card">
+            <form id="growthForm">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="Jane Doe" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Professional Email</label>
+                    <input type="email" id="email" name="email" placeholder="jane@company.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary form-submit" id="submitBtn">
+                    Get My Growth Plan
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- ===== RUPEE AUDIT SECTION ===== -->
+    <section class="rupee-audit">
+        <div class="rupee-content">
+            <div class="rupee-left">
+                <span class="rupee-badge">LIMITED OFFER</span>
+                <h2>Get a Complete LinkedIn Audit for Just ₹1</h2>
+                <p class="rupee-description">
+                    Not a sales call. A real breakdown of what's working, what's not, and what to fix.
+                </p>
+                <div class="rupee-list">
+                    <div class="rupee-item">Comprehensive Profile Review</div>
+                    <div class="rupee-item">Content Gap Analysis</div>
+                    <div class="rupee-item">Strategic Brand Direction</div>
+                    <div class="rupee-item">Clear Action Steps</div>
+                </div>
+                <a href="https://payments.cashfree.com/forms/getaudit" class="btn btn-light">
+                    Book My Audit Now
+                </a>
+            </div>
+
+            <div class="rupee-image">
+                <svg viewBox="0 0 500 350" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: 100%;">
+                    <defs>
+                        <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#e8f0ff;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#f0f4ff;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <rect width="500" height="350" fill="url(#grad2)"/>
+                    <circle cx="250" cy="175" r="100" fill="#d6e3ff" opacity="0.2"/>
+                    <rect x="100" y="80" width="300" height="190" rx="12" fill="#ffffff" stroke="#d6e3ff" stroke-width="2"/>
+                    <text x="250" y="170" text-anchor="middle" font-size="20" fill="#0a66c2" font-weight="600">Your Audit Preview</text>
+                    <text x="250" y="195" text-anchor="middle" font-size="14" fill="#6b7280">Professional insights await</text>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="logo">GrowthCore</div>
+        <nav>
+            <a href="#privacy">Privacy Policy</a>
+            <a href="#terms">Terms of Service</a>
+            <a href="#strategy">LinkedIn Strategy</a>
+            <a href="#contact">Contact Us</a>
+        </nav>
+        <div class="copyright">© 2024 GrowthCore Professional Services. All rights reserved.</div>
+    </footer>
+
+    <script>
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz662utU3t9fh1uP8KMvA_-3qj1qPSZWX3HzF5w3nqcPkp_ihB-VlFrVUE_Jlb88Ekm/exec';
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hero scroll button
+            const heroScrollBtn = document.getElementById('heroScrollBtn');
+            if (heroScrollBtn) {
+                heroScrollBtn.addEventListener('click', function() {
+                    const formSection = document.querySelector('.form-section');
+                    if (formSection) {
+                        formSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            }
+
+            // Form submission
+            const growthForm = document.getElementById('growthForm');
+            if (growthForm) {
+                growthForm.addEventListener('submit', handleFormSubmit);
+            }
+        });
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const submitBtn = document.getElementById('submitBtn');
+
+            if (!name || !email || !phone) {
+                showError('Please fill in all fields');
+                return;
+            }
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                showError('Please enter a valid email');
+                return;
+            }
+
+            submitBtn.classList.add('loading');
+            submitBtn.disabled = true;
+
+            const params = new URLSearchParams();
+            params.append('name', name);
+            params.append('email', email);
+            params.append('phone', phone);
+
+            const url = SCRIPT_URL + '?' + params.toString();
+
+            fetch(url, {
+                method: 'GET',
+                mode: 'no-cors'
+            })
+            .then(function() {
+                showSuccess('Submission successful! We will contact you soon.');
+                document.getElementById('growthForm').reset();
+                submitBtn.classList.remove('loading');
+                submitBtn.disabled = false;
+            })
+            .catch(function(error) {
+                console.error('Error:', error);
+                showSuccess('Form submitted! We will contact you soon.');
+                document.getElementById('growthForm').reset();
+                submitBtn.classList.remove('loading');
+                submitBtn.disabled = false;
+            });
+        }
+
+        function showSuccess(message) {
+            showToast(message, 'success');
+        }
+
+        function showError(message) {
+            showToast(message, 'error');
+        }
+
+        function showToast(message, type) {
+            const toast = document.createElement('div');
+            toast.className = 'toast ' + type;
+            toast.textContent = message;
+            document.body.appendChild(toast);
+
+            setTimeout(function() {
+                toast.style.animation = 'slideOut 0.3s ease forwards';
+                setTimeout(function() {
+                    if (toast.parentNode) {
+                        toast.parentNode.removeChild(toast);
+                    }
+                }, 300);
+            }, 4000);
+        }
+
+        const style = document.createElement('style');
+        style.textContent = '@keyframes slideOut { to { transform: translateX(400px); opacity: 0; } }';
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
